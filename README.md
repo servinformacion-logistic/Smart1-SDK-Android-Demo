@@ -2,6 +2,18 @@
 
 Smart1 SDK integration demo for Android. Shows how to initialize the SDK, use the tracker, download data, and visualize information on a map.
 
+## About Smart1
+
+Smart1 is a comprehensive logistics management solution for first-mile operations, from intelligent vehicle assignment to real-time trip tracking. It provides visibility and intelligent automation to reduce costs and improve efficiency in logistics centers.
+
+The platform offers:
+- **Operations Dashboard** - Real-time view of orders (assigned, in progress, completed)
+- **Intelligent Route Management** - Automatic optimization based on location, dock schedules, and traffic
+- **Fleet Management** - Monitoring of trucks/trailers, capacities, and predictive maintenance
+- **Dynamic URLs** - Customized links to share operation status with clients
+
+This SDK is designed for the **driver/operator side** of the logistics operation, enabling mobile applications for truck drivers who transport cargo between ports and docks, providing real-time tracking, route guidance, and order management capabilities.
+
 ## Features
 
 - 🔑 Smart1 SDK initialization and configuration
@@ -9,7 +21,7 @@ Smart1 SDK integration demo for Android. Shows how to initialize the SDK, use th
 - 📦 Data retrieval (Orders, Routes, Ports, Schedules, Docks)
 - 🗺️ Route and port visualization on Google Maps
 - 📱 Modern UI with Jetpack Compose
-- 🏗️ MVVM architecture with StateFlow
+- 🏗️ MVI architecture with StateFlow
 
 ## Prerequisites
 
@@ -153,3 +165,5 @@ If you see an error about empty API keys:
 ## License
 
 This is a demo project for educational purposes.
+
+**Important:** This is not a complete, production-ready application. It serves as a starting point and reference to help understand how to use the Smart1 SDK in an Android application. The final, complete implementation depends on the specific requirements of each developer or organization integrating the SDK.
