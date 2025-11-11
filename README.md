@@ -119,7 +119,7 @@ Tap the **"Turn On Tracker"** button in the home screen to start the background 
 
 - **Language:** Kotlin
 - **UI:** Jetpack Compose
-- **Architecture:** MVVM
+- **Architecture:** MVI
 - **Async:** Coroutines & Flow
 - **Dependency Injection:** Koin
 - **Maps:** Google Maps Compose
