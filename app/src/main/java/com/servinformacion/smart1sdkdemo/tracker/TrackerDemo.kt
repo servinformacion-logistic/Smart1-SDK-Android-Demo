@@ -25,8 +25,6 @@ import com.servinformacion.smart1sdk.android.transmission.types.Smart1TrackerLog
 import com.servinformacion.smart1sdk.android.transmission.types.Smart1TrackerProcessType
 import com.servinformacion.smart1sdkdemo.R
 import com.servinformacion.smart1sdkdemo.core.MainActivity
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import timber.log.Timber
 
 class TrackerDemo: Service() {

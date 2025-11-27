@@ -1,7 +1,6 @@
 package com.servinformacion.smart1sdkdemo
 
 import android.app.Application
-import com.servinformacion.smart1sdk.android.core.utils.EM
 import com.servinformacion.smart1sdk.android.init_config.InitSDKConfig
 import com.servinformacion.smart1sdk.android.init_config.Smart1SDK
 import com.servinformacion.smart1sdkdemo.di.viewModelDiModule
@@ -22,7 +21,6 @@ class Smart1SDKDemoApp: Application() {
                 viewModelDiModule,
             )
         )
-        EM().i(0)
         if (
             BuildConfig.smart1SDKApiKey.isEmpty() ||
             BuildConfig.smart1SDKUserOperatorEmail.isEmpty()

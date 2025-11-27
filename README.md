@@ -34,14 +34,14 @@ Before running this project, you need:
 
 **Note:** Contact Smart1 administration to obtain the repository credentials and SDK API key.
 
-For complete SDK documentation, visit: [Smart1 SDK Android Documentation](https://smart1-sdk-android-docs-dot-servi-smart1-logistica-dev.uc.r.appspot.com/)
+For complete SDK documentation, visit: [Smart1 SDK Android Documentation](https://smart1-sdk-android-docs-dot-servi-smart1-logistica-prd.uc.r.appspot.com/)
 
 ## Setup
 
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/servinformacion-logistic/Smart1SDK-Android-Demo.git
+git clone https://github.com/servinformacion-logistic/Smart1-SDK-Android-Demo.git
 cd Smart1SDK-Android-Demo
 ```
 
