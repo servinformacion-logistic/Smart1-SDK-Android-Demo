@@ -2,6 +2,7 @@ package com.servinformacion.smart1sdkdemo.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.servinformacion.smart1sdk.android.auth.LogoutAndFinishSession
 import com.servinformacion.smart1sdk.android.core.ResultS1SDK
 import com.servinformacion.smart1sdk.android.core.model.CoordinatesData
 import com.servinformacion.smart1sdk.android.dock.GetAndSearchDocksByPage
@@ -28,6 +29,7 @@ import com.servinformacion.smart1sdkdemo.core.model.ScheduleContainer
 import com.servinformacion.smart1sdkdemo.core.utils.CoordinateUtils
 import com.servinformacion.smart1sdkdemo.core.utils.ErrorUtils
 import com.servinformacion.smart1sdkdemo.core.utils.PaginationUtils
+import com.servinformacion.smart1sdkdemo.core.utils.StartSDKUtils
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -77,8 +79,10 @@ class HomeViewModel(
                         )
                     }
                     if (action.isTrackerRunning) {
+                        LogoutAndFinishSession().invoke()
                         eventChannel.send(HomeEvent.StopTracker)
                     } else {
+                        StartSDKUtils.startSDK()
                         eventChannel.send(HomeEvent.StartTracker)
                     }
                 }

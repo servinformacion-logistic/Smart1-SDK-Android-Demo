@@ -158,8 +158,8 @@ class TrackerDemo: Service() {
                     }
                     when (level) {
                         Smart1TrackerLogLevel.INFO -> Timber.i("$tag: $message")
-                        Smart1TrackerLogLevel.WARNING -> Timber.w(tag, message)
-                        Smart1TrackerLogLevel.ERROR -> Timber.e(tag, message)
+                        Smart1TrackerLogLevel.WARNING -> Timber.w("$tag: $message")
+                        Smart1TrackerLogLevel.ERROR -> Timber.e("$tag: $message")
                     }
                 }
             )
