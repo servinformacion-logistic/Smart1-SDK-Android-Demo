@@ -496,13 +496,22 @@ class HomeViewModel(
                         it.copy(
                             isLoading         = false,
                             currentLoadingMsg = null,
-                            orders            = it.orders.map { order ->
-                                order.copy(
-                                    order = order.order.copy(
-                                        state = OrderState.IN_PROGRESS
+                            orders            = it.orders.map { orderInt ->
+                                if (orderInt.order.id == order.order.id) {
+                                    orderInt.copy(
+                                        order = orderInt.order.copy(
+                                            state = OrderState.IN_PROGRESS
+                                        )
                                     )
-                                )
+                                } else {
+                                    orderInt
+                                }
                           },
+                            selectedOrder = it.selectedOrder?.copy(
+                                order = it.selectedOrder.order.copy(
+                                    state = OrderState.IN_PROGRESS
+                                )
+                            )
                         )
                     }
                 }
