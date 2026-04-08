@@ -25,6 +25,10 @@ import com.servinformacion.smart1sdk.android.transmission.types.Smart1TrackerLog
 import com.servinformacion.smart1sdk.android.transmission.types.Smart1TrackerProcessType
 import com.servinformacion.smart1sdkdemo.R
 import com.servinformacion.smart1sdkdemo.core.MainActivity
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.SharedFlow
+import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.launch
 import timber.log.Timber
 
 class TrackerDemo: Service() {
@@ -134,6 +138,9 @@ class TrackerDemo: Service() {
                     *  Implement a single source of truth pattern using a local database.
                     *  When port events trigger data updates, update this centralized store and let reactive observers (e.g., Flow collectors, LiveData) automatically propagate changes to all UI components.
                     * */
+                    serviceScope.launch {
+                        _onGettingInOrOutOfPortFlow.emit(Pair(portId, "IN"))
+                    }
                 },
                 onGettingOutPort = { portId ->
                     Timber.w("Getting out of the port with id $portId")
@@ -147,6 +154,9 @@ class TrackerDemo: Service() {
                     *  Implement a single source of truth pattern using a local database.
                     *  When port events trigger data updates, update this centralized store and let reactive observers (e.g., Flow collectors, LiveData) automatically propagate changes to all UI components.
                     * */
+                    serviceScope.launch {
+                        _onGettingInOrOutOfPortFlow.emit(Pair(portId, "OUT"))
+                    }
                 },
                 onLog = { level, processType, message ->
                     // Optional: Log tracker events
@@ -254,5 +264,12 @@ class TrackerDemo: Service() {
         private const val TIME_INTERVAL_TO_REQUEST_LOCATION_UPDATES = 1000L // Change based on your needs
         private const val TIME_INTERVAL_TO_SEND_TRACKER_UPDATES = 20000L // Change based on your needs
         private const val TIME_INTERVAL_TO_CHECK_IN_OUT_PORT_TRACKER_UPDATES = 20000L // Change based on your needs
+
+        private val _onGettingInOrOutOfPortFlow = MutableSharedFlow<Pair<Int, String>>()
+        val onGettingInOrOutOfPortFlow: SharedFlow<Pair<Int, String>> = _onGettingInOrOutOfPortFlow.asSharedFlow()
+
+        fun notifyNewOrderInProgress() {
+            Smart1Tracker.notifyNewOrderInProgress()
+        }
     }
 }

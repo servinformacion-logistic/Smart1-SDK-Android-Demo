@@ -27,6 +27,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
@@ -105,6 +106,13 @@ fun HomeScreenRoot(
             }
         }
     )
+    LaunchedEffect(Unit) {
+        TrackerDemo.onGettingInOrOutOfPortFlow.collect { (port, type) ->
+            viewModel.onAction(
+                HomeAction.OnRefreshClicked
+            )
+        }
+    }
     LifecycleEventEffect(event = Lifecycle.Event.ON_RESUME) {
         viewModel.onAction(
             HomeAction.OnStart(
@@ -144,6 +152,11 @@ fun HomeScreenRoot(
                         context,
                         "The location permissions are not granted. Please grant them in the app settings."
                     )
+                }
+            }
+            HomeEvent.NotifyNewOrderInProgressToTracker -> {
+                if (ServiceUtils.isServiceRunning(TrackerDemo::class.java, context)) {
+                    TrackerDemo.notifyNewOrderInProgress()
                 }
             }
             HomeEvent.StopTracker     -> {

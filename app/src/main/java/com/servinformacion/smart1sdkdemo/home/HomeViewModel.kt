@@ -455,15 +455,25 @@ class HomeViewModel(
                     )
                 )
             }
-            if (_state.value.selectedOrder != null) {
-                _state.update {
-                    it.copy(
-                        selectedOrder       = null,
-                        polylineCoordinates = emptyList(),
-                        ports               = emptyList(),
+            val lastSelectedOrder = _state.value.selectedOrder
+            if (lastSelectedOrder != null) {
+                val lastDataOfSelectedOrder = ordersWithRelatedData.firstOrNull { it.order.id == lastSelectedOrder.order.id }
+                if (
+                    lastDataOfSelectedOrder != null
+                ) {
+                    handleOrderSelected(
+                        lastDataOfSelectedOrder
                     )
+                } else {
+                    _state.update {
+                        it.copy(
+                            selectedOrder       = null,
+                            polylineCoordinates = emptyList(),
+                            ports               = emptyList(),
+                        )
+                    }
+                    delay(100)
                 }
-                delay(100)
             }
             _state.update {
                 it.copy(
@@ -512,6 +522,11 @@ class HomeViewModel(
                                     state = OrderState.IN_PROGRESS
                                 )
                             )
+                        )
+                    }
+                    viewModelScope.launch {
+                        eventChannel.send(
+                            HomeEvent.NotifyNewOrderInProgressToTracker
                         )
                     }
                 }

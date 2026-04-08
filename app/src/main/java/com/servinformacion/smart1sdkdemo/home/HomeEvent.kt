@@ -4,6 +4,7 @@ import com.servinformacion.smart1sdk.android.core.model.CoordinatesData
 
 sealed interface HomeEvent {
     data object StartTracker : HomeEvent
+    data object NotifyNewOrderInProgressToTracker : HomeEvent
     data object StopTracker : HomeEvent
     data object GoToAppSettings : HomeEvent
     data class OpenCloseOrderPicker(
