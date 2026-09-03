@@ -34,7 +34,7 @@ Before running this project, you need:
 
 **Note:** Contact Smart1 administration to obtain the repository credentials and SDK API key.
 
-For complete SDK documentation, visit: [Smart1 SDK Android Documentation](https://smart1-sdk-android-docs-dot-servi-smart1-logistica-prd.uc.r.appspot.com/)
+For complete SDK documentation, visit: [Smart1 SDK Android Documentation](https://sdkandroiddoc.smart1.com.co)
 
 ## Setup
 
